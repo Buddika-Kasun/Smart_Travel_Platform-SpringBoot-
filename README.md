@@ -165,8 +165,8 @@ A distributed microservices-based travel booking system built with Spring Boot 3
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd smart-travel-platform
+git clone https://github.com/Buddika-Kasun/Smart_Travel_Platform-SpringBoot-.git
+cd Smart_Travel_Platform-SpringBoot-
 ```
 
 2. **Build all services**
