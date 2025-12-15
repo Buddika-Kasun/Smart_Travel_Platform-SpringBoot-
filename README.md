@@ -469,12 +469,11 @@ This project is part of the ITS 4243 - Microservices and Cloud Computing course 
 
 ## 👥 Author
 
-[Your Name]  
+D. L. Buddika Kasun  
 University of Sri Jayewardenepura  
 Faculty of Technology  
 Department of Information Communication Technology
 
 ---
 
-**Assignment**: ITS 4243 - Assignment 02  
-**Submission Date**: December 13, 2025
+**Assignment**: ITS 4243 - Assignment 02 
