@@ -1,0 +1,444 @@
+{
+  "info": {
+    "name": "Smart Travel Booking Platform",
+    "description": "Complete API collection for all 6 microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User Service",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"+94771234567\",\n  \"address\": \"123 Main St, Colombo\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/users/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Validate User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/users/validate/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "users", "validate", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flight Service",
+      "item": [
+        {
+          "name": "Create Flight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flightNumber\": \"SL123\",\n  \"airline\": \"SriLankan Airlines\",\n  \"origin\": \"Colombo\",\n  \"destination\": \"Singapore\",\n  \"departureTime\": \"2025-01-10T08:00:00\",\n  \"arrivalTime\": \"2025-01-10T12:00:00\",\n  \"price\": 45000.00,\n  \"totalSeats\": 180\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/flights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "flights"]
+            }
+          }
+        },
+        {
+          "name": "Get Flight by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/flights/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "flights", "1"]
+            }
+          }
+        },
+        {
+          "name": "Check Flight Availability",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/flights/1/availability",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8082",
+              "path": ["api", "flights", "1", "availability"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hotel Service",
+      "item": [
+        {
+          "name": "Create Hotel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Marina Bay Sands\",\n  \"location\": \"Singapore\",\n  \"address\": \"10 Bayfront Avenue\",\n  \"starRating\": 5,\n  \"pricePerNight\": 35000.00,\n  \"totalRooms\": 2561,\n  \"amenities\": \"Pool, Spa, Casino, Restaurants\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/hotels",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "hotels"]
+            }
+          }
+        },
+        {
+          "name": "Get Hotel by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/hotels/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "hotels", "1"]
+            }
+          }
+        },
+        {
+          "name": "Check Hotel Availability",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/hotels/1/availability",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "hotels", "1", "availability"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Booking Service",
+      "item": [
+        {
+          "name": "Create Booking (Main Flow)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"flightId\": 1,\n  \"hotelId\": 1,\n  \"travelDate\": \"2025-01-10\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8084/api/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/api/bookings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "bookings", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Bookings by User ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/api/bookings/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "bookings", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Booking Status",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/api/bookings/1/status?status=CONFIRMED",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "bookings", "1", "status"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "CONFIRMED"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payment Service",
+      "item": [
+        {
+          "name": "Process Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingId\": 1,\n  \"amount\": 80000.00,\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"cardNumber\": \"4111111111111111\",\n  \"cvv\": \"123\",\n  \"expiryDate\": \"12/26\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8085/api/payments/process",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "payments", "process"]
+            }
+          }
+        },
+        {
+          "name": "Get Payment by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/payments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "payments", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Payment by Booking ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/payments/booking/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "payments", "booking", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification Service",
+      "item": [
+        {
+          "name": "Send Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"title\": \"Booking Confirmed\",\n  \"message\": \"Your booking has been confirmed successfully!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8086/api/notifications/send",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["api", "notifications", "send"]
+            }
+          }
+        },
+        {
+          "name": "Get Notifications by User ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8086/api/notifications/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["api", "notifications", "user", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Complete Booking Flow",
+      "item": [
+        {
+          "name": "1. Create User",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Smith\",\n  \"email\": \"alice.smith@example.com\",\n  \"phone\": \"+94777654321\",\n  \"address\": \"456 Beach Rd, Negombo\"\n}"
+            },
+            "url": "http://localhost:8081/api/users"
+          }
+        },
+        {
+          "name": "2. Create Flight",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flightNumber\": \"UL455\",\n  \"airline\": \"SriLankan Airlines\",\n  \"origin\": \"Colombo\",\n  \"destination\": \"Dubai\",\n  \"departureTime\": \"2025-01-15T22:00:00\",\n  \"arrivalTime\": \"2025-01-16T01:30:00\",\n  \"price\": 55000.00,\n  \"totalSeats\": 250\n}"
+            },
+            "url": "http://localhost:8082/api/flights"
+          }
+        },
+        {
+          "name": "3. Create Hotel",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Burj Al Arab\",\n  \"location\": \"Dubai\",\n  \"address\": \"Jumeirah Beach\",\n  \"starRating\": 5,\n  \"pricePerNight\": 85000.00,\n  \"totalRooms\": 202,\n  \"amenities\": \"Private Beach, Spa, Fine Dining, Helipad\"\n}"
+            },
+            "url": "http://localhost:8083/api/hotels"
+          }
+        },
+        {
+          "name": "4. Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"flightId\": 1,\n  \"hotelId\": 1,\n  \"travelDate\": \"2025-01-15\"\n}"
+            },
+            "url": "http://localhost:8084/api/bookings"
+          }
+        },
+        {
+          "name": "5. Process Payment",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingId\": 1,\n  \"amount\": 140000.00,\n  \"paymentMethod\": \"CREDIT_CARD\",\n  \"cardNumber\": \"5555555555554444\",\n  \"cvv\": \"456\",\n  \"expiryDate\": \"06/27\"\n}"
+            },
+            "url": "http://localhost:8085/api/payments/process"
+          }
+        },
+        {
+          "name": "6. Get Booking Details",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8084/api/bookings/1"
+          }
+        },
+        {
+          "name": "7. Get Notifications",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8086/api/notifications/user/1"
+          }
+        }
+      ]
+    }
+  ]
+}
