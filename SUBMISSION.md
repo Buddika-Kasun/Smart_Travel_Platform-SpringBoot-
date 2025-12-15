@@ -87,47 +87,47 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                            CLIENT APPLICATION                                │
+│                            CLIENT APPLICATION                               │
 │                    (Postman / Web UI / Mobile App)                          │
 └───────────────────────────────────┬─────────────────────────────────────────┘
                                     │
                                     │ HTTP/REST
                                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          BOOKING SERVICE (8084)                              │
-│                          Main Orchestrator Service                           │
-│  ┌────────────────────────────────────────────────────────────────────┐    │
-│  │  Controllers:                                                       │    │
-│  │    • POST /api/bookings - Create booking                           │    │
-│  │    • GET  /api/bookings/{id} - Get booking                         │    │
-│  │    • PUT  /api/bookings/{id}/status - Update status                │    │
-│  ├────────────────────────────────────────────────────────────────────┤    │
-│  │  Communication Components:                                          │    │
-│  │    • WebClient Bean (Reactive HTTP)                                │    │
-│  │    • Feign Clients (Flight & Hotel)                                │    │
-│  │    • Service Layer (Orchestration Logic)                           │    │
-│  └────────────────────────────────────────────────────────────────────┘    │
-└───────┬──────────────┬──────────────┬──────────────┬────────────────────────┘
-        │              │              │              │
-        │ WebClient    │ Feign        │ Feign        │ WebClient
-        │ GET          │ GET/POST     │ GET/POST     │ POST
-        ▼              ▼              ▼              ▼
-┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│     USER     │ │    FLIGHT    │ │    HOTEL     │ │ NOTIFICATION │
-│   SERVICE    │ │   SERVICE    │ │   SERVICE    │ │   SERVICE    │
-│  (Port 8081) │ │  (Port 8082) │ │  (Port 8083) │ │  (Port 8086) │
-├──────────────┤ ├──────────────┤ ├──────────────┤ ├──────────────┤
-│ Endpoints:   │ │ Endpoints:   │ │ Endpoints:   │ │ Endpoints:   │
-│ • Validate   │ │ • Availability│ │ • Availability│ │ • Send       │
-│ • Get User   │ │ • Reserve    │ │ • Reserve    │ │ • Get List   │
-│ • CRUD Ops   │ │ • CRUD Ops   │ │ • CRUD Ops   │ │              │
-├──────────────┤ ├──────────────┤ ├──────────────┤ ├──────────────┤
-│   Database   │ │   Database   │ │   Database   │ │   Database   │
-│   user_db    │ │  flight_db   │ │  hotel_db    │ │notification_db│
-│ (Port 5432)  │ │ (Port 5433)  │ │ (Port 5434)  │ │ (Port 5437)  │
-└──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          BOOKING SERVICE (8084)                          │
+│                          Main Orchestrator Service                       │
+│  ┌────────────────────────────────────────────────────────────────────┐  │
+│  │  Controllers:                                                      │  │
+│  │    • POST /api/bookings - Create booking                           │  │
+│  │    • GET  /api/bookings/{id} - Get booking                         │  │
+│  │    • PUT  /api/bookings/{id}/status - Update status                │  │
+│  ├────────────────────────────────────────────────────────────────────┤  │
+│  │  Communication Components:                                         │  │
+│  │    • WebClient Bean (Reactive HTTP)                                │  │
+│  │    • Feign Clients (Flight & Hotel)                                │  │
+│  │    • Service Layer (Orchestration Logic)                           │  │
+│  └────────────────────────────────────────────────────────────────────┘  │
+└───────┬────────────────┬──────────────────┬─────────────────┬────────────┘
+        │                │                  │                 │
+        │ WebClient      │ Feign            │ Feign           │ WebClient
+        │ GET            │ GET/POST         │ GET/POST        │ POST
+        ▼                ▼                  ▼                 ▼
+┌──────────────┐ ┌────────────────┐ ┌────────────────┐ ┌────────────────┐
+│     USER     │ │    FLIGHT      │ │    HOTEL       │ │ NOTIFICATION   │
+│   SERVICE    │ │   SERVICE      │ │   SERVICE      │ │   SERVICE      │
+│  (Port 8081) │ │  (Port 8082)   │ │  (Port 8083)   │ │  (Port 8086)   │
+├──────────────┤ ├────────────────┤ ├────────────────┤ ├────────────────┤
+│ Endpoints:   │ │ Endpoints:     │ │ Endpoints:     │ │ Endpoints:     │
+│ • Validate   │ │ • Availability │ │ • Availability │ │ • Send         │
+│ • Get User   │ │ • Reserve      │ │ • Reserve      │ │ • Get List     │
+│ • CRUD Ops   │ │ • CRUD Ops     │ │ • CRUD Ops     │ │                │
+├──────────────┤ ├────────────────┤ ├────────────────┤ ├────────────────┤
+│   Database   │ │   Database     │ │   Database     │ │   Database     │
+│   user_db    │ │  flight_db     │ │  hotel_db      │ │notification_db │
+│ (Port 5432)  │ │ (Port 5433)    │ │ (Port 5434)    │ │ (Port 5437)    │
+└──────────────┘ └────────────────┘ └────────────────┘ └────────────────┘
 
-        ┌──────────────────────────────────────────────┐
+        ┌───────────────────────────────────────────────┐
         │          PAYMENT SERVICE (8085)               │
         │                                               │
         │  Endpoints:                                   │
