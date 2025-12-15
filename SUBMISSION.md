@@ -414,7 +414,6 @@ For any issues or questions:
 - Verify health: `./health-check.sh`
 
 **Assignment:** ITS 4243 - Assignment 02  
-**Due Date:** December 13, 2025  
 **Institution:** University of Sri Jayewardenepura
 
 ---
