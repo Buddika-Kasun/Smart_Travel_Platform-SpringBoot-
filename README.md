@@ -17,7 +17,7 @@ A distributed microservices-based travel booking system built with Spring Boot 3
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        Client Application                        │
+│                        Client Application                       │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
